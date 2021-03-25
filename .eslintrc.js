@@ -55,5 +55,6 @@ module.exports = {
     'react/require-default-props': 0,
     'react/react-in-jsx-scope': 0,
     'react/jsx-filename-extension': 0,
+    'no-nested-ternary': 0,
   },
 };
