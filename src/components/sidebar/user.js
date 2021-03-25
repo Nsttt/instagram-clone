@@ -21,6 +21,8 @@ const User = ({ username, fullname }) =>
 export default memo(User);
 
 User.propTypes = {
-  username: PropTypes.string.isRequired,
-  fullname: PropTypes.string.isRequired,
+  username: PropTypes.string,
+  fullname: PropTypes.string,
 };
+
+User.whyDidYouRender = true;
