@@ -1,5 +1,3 @@
-import './wdyr';
-
 import ReactDOM from 'react-dom';
 import App from './App';
 import FirebaseContext from './context/firebase';
