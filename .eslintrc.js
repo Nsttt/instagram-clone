@@ -56,5 +56,6 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'react/jsx-filename-extension': 0,
     'no-nested-ternary': 0,
+    'no-shadow': 0,
   },
 };
