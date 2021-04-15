@@ -1,5 +1,8 @@
 import { firebase, FieldValue } from '../lib/firebase';
 
+/* 
+  This file gets quite ambiguous due to parameters.
+*/
 export async function doesUsernameExists(username) {
   const result = await firebase
     .firestore()
@@ -52,7 +55,7 @@ export async function updateLoggedInUserFollowing(
     .collection('users')
     .doc(loggedInUserDocId)
     .update({
-      followers: isFollowingProfile
+      following: isFollowingProfile
         ? FieldValue.arrayRemove(profileId)
         : FieldValue.arrayUnion(profileId),
     });
@@ -127,4 +130,18 @@ export async function isUserFollowingProfile(loggedInUserUsername, profileUserId
   }));
 
   return response.userId;
+}
+
+export async function toggleFollow(
+  isFollowingProfile,
+  activeUserDocId,
+  profileDocId,
+  profileUserId,
+  followingUserId,
+) {
+  // param1: User1 docId.
+  // param2: User2 userId.
+  // param3: is User1 following User2? (true/false)
+  await updateLoggedInUserFollowing(activeUserDocId, profileUserId, isFollowingProfile);
+  await updateFollowedUserFollowers(profileDocId, followingUserId, isFollowingProfile);
 }
