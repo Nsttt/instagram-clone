@@ -13,7 +13,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
   const handleSubmitComment = (e) => {
     e.preventDefault();
 
-    setComments([{ displayName, comment }, ...comments]);
+    setComments([...comments, { displayName, comment }]);
     setComment('');
 
     return firebase
@@ -25,7 +25,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
       });
   };
   return (
-    <div className="border-top border-gray-primary">
+    <div className="border-t border-gray-primary">
       <form
         className="flex justify-between pl-0 pr-5"
         method="POST"
@@ -37,7 +37,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
           className="text-sm text-gray-base w-full mr-3 py-5 px-4"
           type="text"
           name="add-comment"
-          placeholder="Add a comment ..."
+          placeholder="Add a comment..."
           value={comment}
           onChange={({ target }) => setComment(target.value)}
           ref={commentInput}
