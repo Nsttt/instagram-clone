@@ -16,7 +16,6 @@ export default function Profile() {
       if (user?.userId) {
         setUser(user);
       } else {
-        setUser(false);
         history.push(ROUTES.NOT_FOUND);
       }
     }

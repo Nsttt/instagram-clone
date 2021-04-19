@@ -25,7 +25,7 @@ describe('<NotFound />', () => {
       );
 
       await waitFor(() => {
-        expect(queryByText('Log In')).toBeFalsy();
+        expect(queryByText('Login')).toBeFalsy();
         expect(queryByText('Not Found!')).toBeTruthy();
       });
     });
@@ -45,7 +45,7 @@ describe('<NotFound />', () => {
       );
 
       await waitFor(() => {
-        expect(queryByText('Log In')).toBeTruthy();
+        expect(queryByText('Login')).toBeTruthy();
         expect(queryByText('Not Found!')).toBeTruthy();
       });
     });
