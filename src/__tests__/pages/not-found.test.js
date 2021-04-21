@@ -1,53 +1,48 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { render, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
 import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
 import NotFound from '../../pages/notfound';
-import { getUserByUserId } from '../../services/firebase.service';
-import userFixture from '../../fixtures/logged-in-user';
 
-jest.mock('../../services/firebase.service');
+const firebase = {
+  auth: jest.fn(() => ({
+    createUserWithEmailAndPassword: jest.fn(() =>
+      Promise.resolve({
+        user: { updateProfile: jest.fn(() => Promise.resolve('I am signed up!')) },
+      }),
+    ),
+  })),
+};
 
 describe('<NotFound />', () => {
   it('renders the not found page with a logged in user', async () => {
-    await act(async () => {
-      await getUserByUserId.mockImplementation(() => [userFixture]);
-      const { queryByText } = render(
-        <Router>
-          <FirebaseContext.Provider value={{}}>
-            <UserContext.Provider value={{ user: { uid: 1 } }}>
-              <NotFound />
-            </UserContext.Provider>
-          </FirebaseContext.Provider>
-        </Router>,
-      );
+    const { getByText } = render(
+      <Router>
+        <FirebaseContext.Provider value={{ firebase }}>
+          <UserContext.Provider value={{ user: {} }}>
+            <NotFound />
+          </UserContext.Provider>
+        </FirebaseContext.Provider>
+      </Router>,
+    );
 
-      await waitFor(() => {
-        expect(queryByText('Login')).toBeFalsy();
-        expect(queryByText('Not Found!')).toBeTruthy();
-      });
-    });
+    expect(getByText('Not Found!')).toBeTruthy();
+    expect(document.title).toEqual('Not Found - Instagram');
   });
 
   it('renders the not found page with an anon user', async () => {
-    await act(async () => {
-      await getUserByUserId.mockImplementation(() => []);
-      const { queryByText } = render(
-        <Router>
-          <FirebaseContext.Provider value={{}}>
-            <UserContext.Provider value={{ user: {} }}>
-              <NotFound />
-            </UserContext.Provider>
-          </FirebaseContext.Provider>
-        </Router>,
-      );
+    const { getByText } = render(
+      <Router>
+        <FirebaseContext.Provider value={{ firebase }}>
+          <UserContext.Provider value={{ user: null }}>
+            <NotFound />
+          </UserContext.Provider>
+        </FirebaseContext.Provider>
+      </Router>,
+    );
 
-      await waitFor(() => {
-        expect(queryByText('Login')).toBeTruthy();
-        expect(queryByText('Not Found!')).toBeTruthy();
-      });
-    });
+    expect(getByText('Not Found!')).toBeTruthy();
+    expect(document.title).toEqual('Not Found - Instagram');
   });
 });
