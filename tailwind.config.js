@@ -2,7 +2,10 @@ module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
   },
-  purge: { enabled: true, content: ['./src/**/*.js', './src/**/**/*.js'] },
+  purge: {
+    enabled: true, // Disable this line on development.
+    content: ['./src/**/*.js', './src/**/**/*.js'],
+  },
   theme: {
     fill: (theme) => ({
       red: theme('colors.red.primary'),
@@ -27,6 +30,8 @@ module.exports = {
     },
   },
   variants: {
-    display: ['group-hover'],
+    extend: {
+      display: ['group-hover'],
+    },
   },
 };
