@@ -31,47 +31,61 @@ export default function Signup() {
           displayName: username,
         });
 
-        await firebase.firestore().collection('users').add({
-          userId: createdUserResult.user.uid,
-          username: username.toLowerCase(),
-          fullName,
-          emailAddress: emailAddress.toLowerCase(),
-          following: [],
-          followers: [],
-          dateCreated: Date.now(),
-        });
+        await firebase
+          .firestore()
+          .collection('users')
+          .add({
+            userId: createdUserResult.user.uid,
+            username: username.toLowerCase(),
+            fullName,
+            emailAddress: emailAddress.toLowerCase(),
+            followers: [],
+            following: ['2'],
+            dateCreated: Date.now(),
+          });
 
-        history.push(ROUTES.DASHBOARD);
+        return history.push(ROUTES.DASHBOARD);
       } catch (err) {
+        setUsername('');
         setFullName('');
         setEmailAddress('');
         setPassword('');
-        setUsername('');
-        setError(error.message);
+        setError(err.message);
       }
     } else {
       setUsername('');
-      setError('That username is already taken, please try another one.');
+      setFullName('');
+      setEmailAddress('');
+      setPassword('');
+      setError('That username is already taken, please try another.');
     }
   };
 
   useEffect(() => {
-    document.title = 'SignUp - PhotoShare';
+    document.title = 'Sign Up - Instagram';
   }, []);
 
   return (
     <>
-      <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-        <div className="flex w-3/5">
-          <img src="/images/iphone-with-profile.jpg" alt="Iphone with Instagram" />
+      <div className="container flex mx-auto max-w-screen-md items-center h-screen px-4 lg:px-0">
+        <div className="hidden lg:flex w-full lg:w-3/5">
+          <img
+            src="/images/iphone-with-profile.jpg"
+            alt="Iphone with Instagram"
+            className="object-scale-down"
+          />
         </div>
-        <div className="flex flex-col w-2/5">
+        <div className="flex flex-col w-full lg:w-2/5 justify-center h-full max-w-md m-auto">
           <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
             <h1 className="flex justify-center w-full">
               <img src="/images/logo.png" alt="Logo" className="mt-2 w-6/12 mb-4" />
             </h1>
-            {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
-            <form onSubmit={handleSignUp} method="POST">
+            {error && (
+              <p className="mb-4 text-xs text-red-primary" data-testid="error">
+                {error}
+              </p>
+            )}
+            <form onSubmit={handleSignUp} method="POST" data-testid="sign-up">
               <input
                 aria-label="Enter your username"
                 type="text"
@@ -117,7 +131,7 @@ export default function Signup() {
           <div className="flex justify-center items-center flex-col w-full bg-white p-4 border border-gray-primary">
             <p className="text-sm">
               Have an account?{` `}
-              <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium">
+              <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium" data-testid="login">
                 Login
               </Link>
             </p>
