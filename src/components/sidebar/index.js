@@ -9,7 +9,7 @@ export default function Sidebar() {
   );
 
   return (
-    <div className="p-4">
+    <div className="hidden lg:block p-4">
       <User username={username} fullname={fullName} />
       <Suggestions userId={userId} following={following} loggedInUserDocId={docId} />
     </div>
