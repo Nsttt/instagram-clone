@@ -109,7 +109,7 @@ describe('<Dashboard />', () => {
     });
   });
 
-  it('renders the dashboard with a user profile of undefined', async () => {
+  it('renders the dashboard with a user object of undefined to trigger fallbacks', async () => {
     await act(async () => {
       getPhotos.mockImplementation(() => photosFixture);
       getSuggestedProfiles.mockImplementation(() => suggestedProfilesFixture);
@@ -120,11 +120,9 @@ describe('<Dashboard />', () => {
           <FirebaseContext.Provider
             value={{
               firebase: {
-                firestore: jest.fn(() => ({
-                  collection: jest.fn(() => ({
-                    doc: jest.fn(() => ({
-                      update: jest.fn(() => Promise.resolve({})),
-                    })),
+                auth: jest.fn(() => ({
+                  signOut: jest.fn(() => ({
+                    updateProfile: jest.fn(() => Promise.resolve({})),
                   })),
                 })),
               },
@@ -144,7 +142,7 @@ describe('<Dashboard />', () => {
       );
 
       expect(getByText('Login')).toBeTruthy();
-      expect(getByText('Sign up')).toBeTruthy();
+      expect(getByText('Sign Up')).toBeTruthy();
     });
   });
 
