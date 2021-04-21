@@ -35,7 +35,7 @@ describe('<Login />', () => {
     );
 
     await act(async () => {
-      expect(document.title).toEqual('Login - PhotoShare');
+      expect(document.title).toEqual('Login - Instagram');
 
       await fireEvent.change(getByPlaceholderText('Email address'), {
         target: { value: 'test-email@google.es' },
@@ -73,8 +73,6 @@ describe('<Login />', () => {
     );
 
     await act(async () => {
-      expect(document.title).toEqual('Login - PhotoShare');
-
       await fireEvent.change(getByPlaceholderText('Email address'), {
         target: { value: 'test-email' },
       });
