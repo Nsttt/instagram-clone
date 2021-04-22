@@ -43,6 +43,7 @@ export default function Header() {
                 </Link>
 
                 <button
+                  data-testid="sign-out"
                   type="button"
                   title="Sign Out"
                   onClick={() => {
