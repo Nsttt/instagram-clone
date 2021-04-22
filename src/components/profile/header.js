@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import useUser from '../../hooks/use-user';
+import useDefaultImage from '../../helpers/use-default-image';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase.service';
 import UserContext from '../../context/user';
 
@@ -48,8 +49,9 @@ export default function Header({
         {profileUsername ? (
           <img
             className="rounded-full h-16 w-16 md:h-20 lg:h-40 md:w-20 lg:w-40 flex"
-            alt={`${user.username} profile`}
+            alt="profile"
             src={`/images/avatars/${profileUsername}.jpg`}
+            onError={useDefaultImage}
           />
         ) : (
           <img

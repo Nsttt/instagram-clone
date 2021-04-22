@@ -5,6 +5,7 @@ import {
   updateLoggedInUserFollowing,
   updateFollowedUserFollowers,
 } from '../../services/firebase.service';
+import useDefaultImage from '../../helpers/use-default-image';
 
 export default function SuggestedProfile({
   profileDocId,
@@ -29,6 +30,7 @@ export default function SuggestedProfile({
           className="rounded-full w-8 flex mr-3"
           src={`/images/avatars/${username}.jpg`}
           alt=""
+          onError={useDefaultImage}
         />
         <Link to={`/p/${username}`}>
           <p className="font-bold text-sm">{username}</p>
