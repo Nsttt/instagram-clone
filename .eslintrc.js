@@ -5,7 +5,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
+  extends: ['plugin:react/recommended', 'airbnb', 'prettier', 'plugin:cypress/recommended'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -13,7 +13,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'cypress'],
   rules: {
     'prefer-const': [
       'error',
@@ -58,5 +58,6 @@ module.exports = {
     'react/jsx-filename-extension': 0,
     'no-nested-ternary': 0,
     'no-shadow': 0,
+    'cypress/no-unnecessary-waiting': 0,
   },
 };
