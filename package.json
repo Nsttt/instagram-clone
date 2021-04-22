@@ -26,6 +26,7 @@
     "eslint": "^7.22.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.3.1",
@@ -47,6 +48,7 @@
     "start": " run-p watch:css react-scripts:start",
     "build": "run-s build:css react-scripts:dist",
     "test": "react-scripts test --coverage --watchAll",
+    "e2e": "cypress open",
     "eject": "react-scripts eject"
   },
   "husky": {
