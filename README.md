@@ -5,7 +5,7 @@
 </p>
 <h1 align="center">Instagram Clone</h1>
 <p align="center">An Instagram clone made entirely on React.</p>
-<p align="center"><a href="https://nstlopez.com">Check it out here!</a></p>
+<p align="center"><a href="https://photos.nstlopez.com">Check it out here!</a></p>
 <br />
 <br>
 <p align="center">
