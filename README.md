@@ -16,6 +16,7 @@
 <br>
  
 #### Summary
+> **Default Credentials** **Mail**: test@mail.com **Password**: test1234
 
 This app, built in **React** (CRA) is a clone of Facebooks [Instagram](https://www.instagram.com). Having a Login, Sign Up, Dashboard and Profile page, some private with Auth-listeners.
 
@@ -24,6 +25,8 @@ For data I used **Firebase** firestore all retrieved using a custom hook.
 For styling **TailwindCSS** is being used. I really enjoyed working with it thanks to the ease of use it features.
 
 Finally, it uses **Jest** and **react-testting-library** for tests and also features **Cypress** for E2E testing.
+
+You can read more about its development on my [portfolio article](https://nstlopez.com/project/instagram-clone).
 
 ## Getting Started
 
