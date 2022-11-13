@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   env: {
     browser: true,
     node: true,
@@ -14,12 +14,19 @@ module.exports = {
     "prettier",
   ],
   plugins: ["react", "@typescript-eslint", "prettier"],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
+    ecmaVersion: 13,
     sourceType: "module",
+    project: "./tsconfig.json",
   },
   rules: {
     "linebreak-style": ["error", "unix"],
