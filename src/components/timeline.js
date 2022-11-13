@@ -1,8 +1,8 @@
-import { useContext } from 'react';
-import Skeleton from 'react-loading-skeleton';
-import usePhotos from '../hooks/use-photos';
-import Post from './post';
-import LoggedInUserContext from '../context/logged-in-user';
+import { useContext } from "react";
+import Skeleton from "react-loading-skeleton";
+import usePhotos from "../hooks/use-photos";
+import Post from "./post";
+import LoggedInUserContext from "../context/logged-in-user";
 
 export default function Timeline() {
   const { user } = useContext(LoggedInUserContext);

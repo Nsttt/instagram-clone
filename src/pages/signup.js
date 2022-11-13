@@ -1,20 +1,20 @@
-import { useContext, useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import FirebaseContext from '../context/firebase';
-import * as ROUTES from '../constants/routes';
-import { doesUsernameExists } from '../services/firebase.service';
+import { useContext, useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import FirebaseContext from "../context/firebase";
+import * as ROUTES from "../constants/routes";
+import { doesUsernameExists } from "../services/firebase.service";
 
 export default function Signup() {
   const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
 
-  const [username, setUsername] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [emailAddress, setEmailAddress] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [error, setError] = useState('');
-  const isInvalid = password === '' || emailAddress === '';
+  const [error, setError] = useState("");
+  const isInvalid = password === "" || emailAddress === "";
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -33,36 +33,36 @@ export default function Signup() {
 
         await firebase
           .firestore()
-          .collection('users')
+          .collection("users")
           .add({
             userId: createdUserResult.user.uid,
             username: username.toLowerCase(),
             fullName,
             emailAddress: emailAddress.toLowerCase(),
             followers: [],
-            following: ['2'],
+            following: ["2"],
             dateCreated: Date.now(),
           });
 
         return history.push(ROUTES.DASHBOARD);
       } catch (err) {
-        setUsername('');
-        setFullName('');
-        setEmailAddress('');
-        setPassword('');
+        setUsername("");
+        setFullName("");
+        setEmailAddress("");
+        setPassword("");
         setError(err.message);
       }
     } else {
-      setUsername('');
-      setFullName('');
-      setEmailAddress('');
-      setPassword('');
-      setError('That username is already taken, please try another.');
+      setUsername("");
+      setFullName("");
+      setEmailAddress("");
+      setPassword("");
+      setError("That username is already taken, please try another.");
     }
   };
 
   useEffect(() => {
-    document.title = 'Sign Up - Instagram';
+    document.title = "Sign Up - Instagram";
   }, []);
 
   return (
@@ -78,7 +78,11 @@ export default function Signup() {
         <div className="flex flex-col w-full lg:w-2/5 justify-center h-full max-w-md m-auto">
           <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
             <h1 className="flex justify-center w-full">
-              <img src="/images/logo.png" alt="Logo" className="mt-2 w-6/12 mb-4" />
+              <img
+                src="/images/logo.png"
+                alt="Logo"
+                className="mt-2 w-6/12 mb-4"
+              />
             </h1>
             {error && (
               <p className="mb-4 text-xs text-red-primary" data-testid="error">
@@ -122,7 +126,7 @@ export default function Signup() {
                 disabled={isInvalid}
                 type="submit"
                 className={`bg-blue-medium text-white w-full rounded h-8 font-bold 
-              ${isInvalid && 'opacity-50'}`}
+              ${isInvalid && "opacity-50"}`}
               >
                 Sign Up
               </button>
@@ -131,7 +135,11 @@ export default function Signup() {
           <div className="flex justify-center items-center flex-col w-full bg-white p-4 border border-gray-primary">
             <p className="text-sm">
               Have an account?{` `}
-              <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium" data-testid="login">
+              <Link
+                to={ROUTES.LOGIN}
+                className="font-bold text-blue-medium"
+                data-testid="login"
+              >
                 Login
               </Link>
             </p>

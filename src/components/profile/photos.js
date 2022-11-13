@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import Skeleton from 'react-loading-skeleton';
+import PropTypes from "prop-types";
+import Skeleton from "react-loading-skeleton";
 
 export default function Photos({ photos }) {
   return (
@@ -50,7 +50,10 @@ export default function Photos({ photos }) {
           ))
         ) : null}
       </div>
-      {!photos || (photos.length === 0 && <p className="text-center text-2xl">No posts yet!</p>)}
+      {!photos ||
+        (photos.length === 0 && (
+          <p className="text-center text-2xl">No posts yet!</p>
+        ))}
     </div>
   );
 }

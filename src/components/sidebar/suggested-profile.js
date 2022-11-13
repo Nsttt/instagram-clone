@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import {
   updateLoggedInUserFollowing,
   updateFollowedUserFollowers,
-} from '../../services/firebase.service';
-import useDefaultImage from '../../helpers/use-default-image';
+} from "../../services/firebase.service";
+import useDefaultImage from "../../helpers/use-default-image";
 
 export default function SuggestedProfile({
   profileDocId,

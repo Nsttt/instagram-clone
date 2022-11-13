@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { getUserByUserId } from '../services/firebase.service';
+import { useEffect, useState } from "react";
+import { getUserByUserId } from "../services/firebase.service";
 
 export default function useUser(userId) {
   const [activeUser, setActiveUser] = useState({});

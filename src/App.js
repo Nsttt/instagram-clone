@@ -1,16 +1,16 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import * as ROUTES from './constants/routes';
-import useAuthListener from './hooks/use-auth-listener';
-import UserContext from './context/user';
+import { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import * as ROUTES from "./constants/routes";
+import useAuthListener from "./hooks/use-auth-listener";
+import UserContext from "./context/user";
 
-import ProtectedRoute from './helpers/protected.route';
+import ProtectedRoute from "./helpers/protected.route";
 
-const Dashboard = lazy(() => import('./pages/dashboard'));
-const SignUp = lazy(() => import('./pages/signup'));
-const Login = lazy(() => import('./pages/login'));
-const NotFound = lazy(() => import('./pages/notfound'));
-const Profile = lazy(() => import('./pages/profile'));
+const Dashboard = lazy(() => import("./pages/dashboard"));
+const SignUp = lazy(() => import("./pages/signup"));
+const Login = lazy(() => import("./pages/login"));
+const NotFound = lazy(() => import("./pages/notfound"));
+const Profile = lazy(() => import("./pages/profile"));
 
 export default function App() {
   const { user } = useAuthListener();
