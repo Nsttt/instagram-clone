@@ -29,6 +29,6 @@
     "target": "ESNext",
     "types": ["vitest/globals", "vite/client"]
   },
-  "include": ["./src/**/*", "./vite.config.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
   "exclude": ["./node_modules"]
 }

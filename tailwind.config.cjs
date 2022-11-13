@@ -1,11 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-  },
-  purge: {
-    enabled: true, // Disable this line on development.
-    content: ["./src/**/*.js", "./src/**/**/*.js"],
-  },
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fill: (theme) => ({
       red: theme("colors.red.primary"),
@@ -29,6 +24,7 @@ module.exports = {
       },
     },
   },
+  plugins: [],
   variants: {
     extend: {
       display: ["group-hover"],
