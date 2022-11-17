@@ -1,7 +1,5 @@
 import Firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
-// import seedDatabase from '../seed';
+import FieldValue from "firebase/firestore";
 
 const config = {
   apiKey: process.env.REACT_APP_apiKey,
@@ -13,9 +11,8 @@ const config = {
 };
 
 const firebase = Firebase.initializeApp(config);
-const { FieldValue } = Firebase.firestore;
 
-// ! Seed database function, only run once.
+// ! Seed database function, run only once.
 // seedDatabase(firebase);
 
 export { firebase, FieldValue };
